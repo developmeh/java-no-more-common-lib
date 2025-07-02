@@ -1,4 +1,4 @@
 rootProject.name = 'spring-gradle-example'
 
-include 'library-module'
+include 'jackson-module'
 include 'service-module'

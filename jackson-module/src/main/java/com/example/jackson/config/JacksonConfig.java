@@ -1,4 +1,4 @@
-package com.example.library.config;
+package com.example.jackson.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -9,14 +9,14 @@ import org.springframework.context.annotation.Primary;
 
 /**
  * Jackson configuration that will be automatically included in any service
- * that depends on this library.
+ * that depends on this jackson module.
  */
 @Configuration
 public class JacksonConfig {
 
     /**
      * Configures the ObjectMapper with common settings.
-     * This bean will be available to any service that includes this library.
+     * This bean will be available to any service that includes this jackson module.
      */
     @Bean
     @Primary

@@ -17,23 +17,23 @@ public class ServiceApplication {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(ServiceApplication.class, args);
-        
+
         // Print the version of Jackson being used
         ObjectMapper objectMapper = context.getBean(ObjectMapper.class);
         System.out.println("Using Jackson version: " + com.fasterxml.jackson.core.json.PackageVersion.VERSION);
     }
-    
+
     @RestController
     static class TestController {
-        
+
         private final ObjectMapper objectMapper;
-        
+
         TestController(ObjectMapper objectMapper) {
             this.objectMapper = objectMapper;
-            // This ObjectMapper is configured by the library's JacksonConfig
+            // This ObjectMapper is configured by the jackson module's JacksonConfig
             // but uses the version specified in the service module
         }
-        
+
         @GetMapping("/test")
         public Map<String, Object> test() {
             Map<String, Object> response = new HashMap<>();
