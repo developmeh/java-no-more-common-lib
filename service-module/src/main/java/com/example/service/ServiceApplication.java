@@ -5,14 +5,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.service.config.JacksonConfig;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
 @SpringBootApplication
+@Import(JacksonConfig.class) // Explicitly import the JacksonConfig
 public class ServiceApplication {
 
     public static void main(String[] args) {
@@ -30,8 +34,8 @@ public class ServiceApplication {
 
         TestController(ObjectMapper objectMapper) {
             this.objectMapper = objectMapper;
-            // This ObjectMapper is configured by the jackson module's JacksonConfig
-            // but uses the version specified in the service module
+            // This ObjectMapper is now configured by the service module's JacksonConfig
+            // instead of the jackson module's auto-configuration
         }
 
         @GetMapping("/test")
